@@ -2,6 +2,10 @@
 <link rel="import" href="../../iron-icons/iron-icons.html">
 <link rel="import" href="../icon-toggle.html">
 
+<link rel="import" href="../../highcharts-chart/highcharts-chart.html">
+<link rel="import" href="../../highcharts-chart/highcharts-map.html">
+<link rel="import" href="../../highcharts-chart/highcharts-stock.html">
+
 
 <dom-module id="icon-toggle-demo">
   <template>
@@ -37,4 +41,39 @@
       }
     });
   </script>
+</dom-module>
+
+<dom-module id="bar-chart">
+	<template>
+		<div id="container" style="max-width: 600px; height: 360px;"></div>
+	</template>
+
+	<script>
+		Polymer({
+		is: "bar-chart",
+		ready: function () {
+
+
+			$(this.$.container).highcharts({
+			chart: {
+				type: 'bar',
+				renderTo: 'container'
+			},
+			title: {text:  'Chart Bar'},
+			xAxis: {
+				categories: ['London', 'Paris', 'Madrid']
+			},
+			yAxis: {
+				title: {
+					text: 'Sales'
+				}
+			},
+			series: [{
+				name: 'Cities',
+				data: [1000, 2500, 1500]
+			}]
+		})
+	  }
+	});
+	</script>
 </dom-module>
