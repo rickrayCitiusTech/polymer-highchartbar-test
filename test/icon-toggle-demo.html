@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>icon-toggle-demo</title>
+
+    <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+
+    <!-- Import the element to test -->
+    <link rel="import" href="../demo/icon-toggle-demo.html">
+  </head>
+  <body>
+    <test-fixture id="basic">
+      <template>
+        <icon-toggle-demo></icon-toggle-demo>
+      </template>
+    </test-fixture>
+
+    <script>
+      suite('<icon-toggle-demo>', function() {
+        var myEl;
+        setup(function() {
+          myEl = fixture('basic');
+        });
+        test('chart element title', function() {
+          assert.equal(myEl.text, 'Chart Bar');
+        });
+      });
+    </script>
+
+  </body>
+</html>
