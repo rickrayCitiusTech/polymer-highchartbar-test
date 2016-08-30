@@ -15,18 +15,38 @@
   <body>
     <test-fixture id="basic">
       <template>
-        <icon-toggle-demo></icon-toggle-demo>
+        <bar-chart></bar-chart>
       </template>
     </test-fixture>
 
     <script>
-      suite('<icon-toggle-demo>', function() {
+      suite('<bar-chart>', function() {
         var myEl;
         setup(function() {
           myEl = fixture('basic');
         });
         test('chart element title', function() {
-          assert.equal(myEl.text, 'Chart Bar');
+          var circle = Polymer.dom(home.root).querySelector('#container');
+          assert.equal(circle.textContent, 'Chart Bar');
+        });
+      });
+
+      suite('<bar-chart>', function() {
+        var list, listItems;
+        setup(function() {
+          list = fixture('basic');
+        });
+        test('x-axis categories', function(done) {
+          list.items = [
+            'London',
+            'Paris',
+            'Madrid'
+          ];
+          flush(function() {
+            listItems = Polymer.dom(list.root).querySelectorAll('li');
+            assert.equal(list.items.length, listItems.length);
+            done();
+          });
         });
       });
     </script>
